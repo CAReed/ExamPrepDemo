@@ -35,9 +35,9 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="Large1280">
+                <VisualState x:Name="VS1024">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1280" />
+                        <AdaptiveTrigger MinWindowWidth="1024" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="MyCommandBar.(UIElement.Visibility)"
@@ -48,5 +48,35 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <SplitView DisplayMode="Inline"
+                   x:Name="epSplitView"
+                   OpenPaneLength="256">
+            <SplitView.Pane>
+                <Grid>
+                    <Button x:Name="BackButton"
+                            TabIndex="2"
+                            Click="BackButton_Click" />
+                </Grid>
+            </SplitView.Pane>
+            <Frame x:Name="frame"
+                   Navigating="OnNavigatingToPage"
+                   Navigated="OnNavigatedToPage">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </SplitView>
+        <ToggleButton x:Name="TogglePaneButton"
+                      TabIndex="1"
+                      IsChecked="{Binding IsPaneOpen, ElementName=epSplitView, Mode=TwoWay}"
+                      Checked="TogglePaneButton_Checked"
+                      AutomationProperties.Name="Menu"
+                      ToolTipService.ToolTip="Menu" />
     </Grid>
 </Page>
