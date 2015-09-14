@@ -8,7 +8,7 @@
     <Page.TopAppBar>
         <CommandBar Visibility="Collapsed"
                     x:Name="TopCommandBar"
-                    Height="50"
+                    Height="75"
                     Margin="0,0,0,0">
             <CommandBar.Content>
                 <Grid />
@@ -21,7 +21,7 @@
     </Page.TopAppBar>
     <Page.BottomAppBar>
         <CommandBar x:Name="MyCommandBar"
-                    Height="50"
+                    Height="75"
                     Margin="0,0,0,0">
             <CommandBar.Content>
                 <Grid />
